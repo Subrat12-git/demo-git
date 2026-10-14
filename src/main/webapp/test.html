@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Summary test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Write your summary</h1>
+        <p>Summarize the instructions on the <a href="About.html">About page</a>.</p>
+        <form action="Verify.jsp" method="post" accept-charset="UTF-8">
+            <p>
+                <label for="name">Name (fewer than 10 characters, starts with a capital)</label><br>
+                <input id="name" name="name" type="text" maxlength="9" required>
+            </p>
+            <p>
+                <label for="email">Email (must end in @gmail.com)</label><br>
+                <input id="email" name="email" type="email" required>
+            </p>
+            <p>
+                <label for="summary">Your summary</label><br>
+                <textarea id="summary" name="summary" rows="7" cols="50" required></textarea>
+            </p>
+            <button type="submit">Verify and continue</button>
+        </form>
+    </main>
+</body>
+</html>
