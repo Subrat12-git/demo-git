@@ -20,6 +20,8 @@
     String name = request.getParameter("name");
     String email = request.getParameter("email");
     String summary = request.getParameter("summary");
+    String scenarioTitle = (String) request.getAttribute("scenarioTitle");
+    String scenarioDescription = (String) request.getAttribute("scenarioDescription");
 %>
 <!doctype html>
 <html lang="en">
@@ -34,6 +36,8 @@
         <h1>Submission received</h1>
         <p><strong>Name:</strong> <%= escapeHtml(name) %></p>
         <p><strong>Email:</strong> <%= escapeHtml(email) %></p>
+        <h2><%= escapeHtml(scenarioTitle) %></h2>
+        <p><%= escapeHtml(scenarioDescription) %></p>
         <h2>Your summary</h2>
         <p><%= escapeHtml(summary).replace("\r\n", "\n").replace("\n", "<br>") %></p>
     </main>

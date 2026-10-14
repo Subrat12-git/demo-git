@@ -1,7 +1,9 @@
 # Summary Test JSP App
 
-A small JSP web app with an About page, a summary form, server-side validation,
-and a results page. All pages share a responsive stylesheet.
+A small JSP web app with an About page, a scenario chooser, a topic-specific
+summary form, server-side validation, and a results page. All pages share a
+responsive stylesheet. Scenarios include a reading habit, a teamwork project,
+school waste reduction, and a community garden.
 
 ## Run locally
 
@@ -17,9 +19,10 @@ Requirements: Java 17, Maven, and Apache Tomcat 10.1.
    Tomcat.
 3. Open `http://localhost:8080/summary-test/`.
 
-The verifier accepts a name that starts with an uppercase letter and is fewer
-than 10 characters, an email address ending in `@gmail.com`, and a non-empty
-summary. Submitted values are HTML-escaped before being displayed.
+Choose a scenario at `scenarios.html`. The verifier accepts a name that starts
+with an uppercase letter and is fewer than 10 characters, an email address
+ending in `@gmail.com`, a non-empty summary, and one of the known scenarios.
+Submitted values are HTML-escaped before being displayed.
 
 This folder is not initialized as a Git repository. You can create and push one
 manually when you are ready.
