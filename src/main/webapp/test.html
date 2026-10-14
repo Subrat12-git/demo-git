@@ -8,23 +8,66 @@
 </head>
 <body>
     <main>
-        <h1>Write your summary</h1>
-        <p>Summarize the instructions on the <a href="About.html">About page</a>.</p>
+        <h1 id="page-title">Write your summary</h1>
+        <section aria-labelledby="scenario-title">
+            <h2 id="scenario-title">About this scenario</h2>
+            <p id="scenario-description">Choose a scenario before writing your summary.</p>
+            <p><a href="scenarios.html">Choose a different scenario</a></p>
+        </section>
         <form action="Verify.jsp" method="post" accept-charset="UTF-8">
+            <input id="scenario" name="scenario" type="hidden" value="">
             <p>
-                <label for="name">Name (fewer than 10 characters, starts with a capital)</label><br>
+                <label for="name">Name (fewer than 10 characters, starts with a capital)</label>
                 <input id="name" name="name" type="text" maxlength="9" required>
             </p>
             <p>
-                <label for="email">Email (must end in @gmail.com)</label><br>
+                <label for="email">Email (must end in @gmail.com)</label>
                 <input id="email" name="email" type="email" required>
             </p>
             <p>
-                <label for="summary">Your summary</label><br>
+                <label id="summary-label" for="summary">Your summary</label>
                 <textarea id="summary" name="summary" rows="7" cols="50" required></textarea>
             </p>
             <button type="submit">Verify and continue</button>
         </form>
     </main>
+    <script>
+        const scenarios = {
+            reading: {
+                title: "Building a daily reading habit",
+                description: "A student wants to read more but has a busy schedule. They start with ten minutes each evening, keep a book nearby, and track their progress. After a few weeks, reading becomes a steady habit.",
+                prompt: "Summarize how the student builds a regular reading habit."
+            },
+            teamwork: {
+                title: "Working together on a team project",
+                description: "A project team has a short deadline. Members agree on a shared goal, divide the work according to their strengths, check in regularly, and ask for help when a task is blocked. They review the result together before submitting it.",
+                prompt: "Summarize how the team organizes its work and handles challenges."
+            },
+            environment: {
+                title: "Reducing waste at school",
+                description: "A school notices that many disposable cups and paper sheets are thrown away each day. Students bring reusable bottles, teachers share digital handouts when practical, and volunteers measure the waste each week to see whether the changes help.",
+                prompt: "Summarize the actions the school takes to reduce waste and measure progress."
+            },
+            planning: {
+                title: "Planning a community garden",
+                description: "Neighbors turn an unused space into a garden. They ask residents what they want to grow, plan plots and paths, share tools, and create a watering schedule. They also leave a few beds open for people who cannot commit to a full plot.",
+                prompt: "Summarize the steps neighbors take to plan an inclusive garden."
+            }
+        };
+
+        const selectedScenario = new URLSearchParams(window.location.search).get("scenario");
+        const scenario = scenarios[selectedScenario];
+        if (scenario) {
+            document.getElementById("page-title").textContent = scenario.prompt;
+            document.getElementById("scenario-title").textContent = scenario.title;
+            document.getElementById("scenario-description").textContent = scenario.description;
+            document.getElementById("summary-label").textContent = "Your summary";
+            document.getElementById("scenario").value = selectedScenario;
+        } else {
+            document.getElementById("scenario-description").textContent =
+                "Choose one of the reading scenarios to see its passage and summary prompt.";
+            document.querySelector("form button").disabled = true;
+        }
+    </script>
 </body>
 </html>
